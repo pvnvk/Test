@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RestaurantOrder</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_bread">BreadActivity</string>
+    <string name="title_activity_veg_filling">VegFilling</string>
+    <string name="title_activity_non_veg_filling">NonVegFilling</string>
+    <string name="title_activity_arocheese">Cheese</string>
+    <string name="title_activity_sauce">Sauce</string>
+    <string name="title_activity_aroorder">AROOrder</string>
+
+</resources>

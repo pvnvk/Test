@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="restaurant.praveen.com.restaurantorder.AROBread">
+
+    <TextView
+        android:id="@+id/label_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Would you like to have non-veg filling"/>
+    <RadioGroup
+        android:id="@+id/radio_group_show_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_select"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rb_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Yes"/>
+        <RadioButton
+            android:id="@+id/rb_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/label_fillings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="20dp"
+        android:text="Select a Non Veg Filling"
+        android:layout_below="@id/radio_group_show_list"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_fillings">
+
+    </RadioGroup>
+    <Button
+        android:id="@+id/btn_proceed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radio_group"
+        android:text="Proceed"/>
+
+</RelativeLayout>
