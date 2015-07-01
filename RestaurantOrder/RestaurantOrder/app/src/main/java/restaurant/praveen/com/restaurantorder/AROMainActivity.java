@@ -1,6 +1,7 @@
 package restaurant.praveen.com.restaurantorder;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -31,6 +32,7 @@ public class AROMainActivity extends ActionBarActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.content_frame);
         frameLayout.addView(getLayoutInflater().inflate(
                 R.layout.layout_main, null));
@@ -41,8 +43,13 @@ public class AROMainActivity extends ActionBarActivity implements View.OnClickLi
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, mPlanetTitles));
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        //actionBar.setHomeButtonEnabled(true);
+
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.mipmap.ic_launcher, R.string.drawer_open, R.string.drawer_close) {
+                R.drawable.ic_launcher, R.string.drawer_open, R.string.drawer_close) {
 
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
@@ -60,8 +67,16 @@ public class AROMainActivity extends ActionBarActivity implements View.OnClickLi
             }
         };
 
+        mDrawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mDrawerToggle.syncState();
+            }
+        });
+
         // Set the drawer toggle as the DrawerListener
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
         init();
     }
 
@@ -83,6 +98,9 @@ public class AROMainActivity extends ActionBarActivity implements View.OnClickLi
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -123,5 +141,17 @@ public class AROMainActivity extends ActionBarActivity implements View.OnClickLi
                 handleSaladClick();
                 break;
         }
+    }
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 }
